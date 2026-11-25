@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Organic Chemistry & Medicinal Plants: A Two-Way Bridge</title>
+  <style>
+    :root {
+      --bg: #f4f7f6;
+      --surface: #ffffff;
+      --primary: #0f4c5c;
+      --primary-light: #e6f2f5;
+      --accent: #2a9d8f;
+      --accent-soft: #eaf6f4;
+      --text: #1e293b;
+      --muted: #475569;
+      --border: #cbd5e1;
+      --acid-bg: #fef2f2;
+      --acid-text: #991b1b;
+      --base-bg: #eff6ff;
+      --base-text: #1e40af;
+      --shadow: 0 4px 16px rgba(15, 76, 92, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding-bottom: 3rem;
+    }
+
+    /* Header / Hero */
+    header {
+      background: linear-gradient(135deg, #0f4c5c 0%, #1b6b7d 55%, #2a9d8f 100%);
+      color: #ffffff;
+      padding: 2.75rem 1.25rem 2.25rem;
+      border-bottom: 4px solid #1d3557;
+    }
+
+    .container {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+    }
+
+    header h1 {
+      font-size: clamp(1.65rem, 3.6vw, 2.35rem);
+      line-height: 1.25;
+      margin-bottom: 0.65rem;
+      font-weight: 800;
+    }
+
+    .subtitle {
+      font-size: 1.02rem;
+      color: #e2f1f4;
+      max-width: 850px;
+      margin-bottom: 0.75rem;
+    }
+
+    .sub-focus {
+      font-size: 0.92rem;
+      color: #cce7ec;
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+    }
+
+    .researchers-box {
+      background: rgba(15, 35, 45, 0.32);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      font-size: 0.92rem;
+    }
+
+    .researchers-box strong {
+      color: #a8f0e4;
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Sticky Quick Nav */
+    nav.toc {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    nav.toc .container {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding: 0.65rem 1rem;
+      scrollbar-width: thin;
+    }
+
+    nav.toc a {
+      text-decoration: none;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 0.38rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    nav.toc a:hover {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    /* Cards & Sections */
+    main {
+      margin-top: 1.75rem;
+    }
+
+    section.card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem 1.5rem;
+      margin-bottom: 1.6rem;
+      box-shadow: var(--shadow);
+    }
+
+    .core-concept {
+      border-left: 5px solid var(--accent);
+      background: linear-gradient(to right, #f7fcfb, #ffffff);
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 1.32rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.45rem;
+      border-bottom: 2px solid var(--primary-light);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    h3 {
+      color: #164e63;
+      font-size: 1.08rem;
+      margin: 1.25rem 0 0.55rem;
+    }
+
+    p {
+      margin-bottom: 0.9rem;
+      color: var(--text);
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Responsive Tables */
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1rem 0;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 640px;
+      font-size: 0.93rem;
+    }
+
+    table.compact-table {
+      min-width: 440px;
+    }
+
+    thead {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    th {
+      text-align: left;
+      padding: 0.8rem 0.9rem;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.02em;
+    }
+
+    td {
+      padding: 0.85rem 0.9rem;
+      border-top: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    .med-name {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .ph-pill {
+      display: inline-block;
+      padding: 0.22rem 0.55rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.84rem;
+    }
+
+    .ph-base {
+      background: var(--base-bg);
+      color: var(--base-text);
+      border: 1px solid #bfdbfe;
+    }
+
+    .ph-acid {
+      background: var(--acid-bg);
+      color: var(--acid-text);
+      border: 1px solid #fecaca;
+    }
+
+    /* Callout Banner */
+    .callout {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      padding: 0.95rem 1.1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+
+    /* Clinical Grid */
+    .clinical-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    .clinical-item {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--primary);
+      border-radius: 10px;
+      padding: 1rem 1.05rem;
+    }
+
+    .clinical-item h3 {
+      margin-top: 0;
+      font-size: 1rem;
+      color: var(--primary);
+    }
+
+    .mechanism-block {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 1rem 1.15rem;
+      margin-bottom: 1rem;
+    }
+
+    .mechanism-block h3 {
+      margin-top: 0;
+    }
+
+    ol.refs {
+      padding-left: 1.35rem;
+    }
+
+    ol.refs li {
+      margin-bottom: 0.65rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 2rem;
+      padding: 0 1rem;
+    }
+
+    @media (max-width: 600px) {
+      section.card {
+        padding: 1.2rem 1rem;
+      }
+      header {
+        padding: 2rem 1rem 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="badge">Organic Chemistry &amp; Pharmaceutical Assurance Project</div>
+      <h1>Organic Chemistry &amp; Medicinal Plants: A Two-Way Bridge</h1>
+      <p class="subtitle">
+        From Chemistry to Pharmacy — Small Concepts, Safer Patients: Connecting Organic Chemistry I
+        (Acids &amp; Bases / pH and Chemical Stability / Storage) with Medication Safety
+      </p>
+      <p class="sub-focus">
+        Acid-Base pH Profiles, Storage Stability Protocols, Mechanisms, Clinical Applications, and Botanical Quality Control
+      </p>
+      <div class="researchers-box">
+        <strong>Researchers</strong>
+        Youssef Tarek &bull; Moamen Mohamed &bull; Sara Morgan &bull; Menna Hegazy &bull; Farida Hafez
+      </div>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Section Navigation">
+    <div class="container">
+      <a href="#core-concept">Core Concept</a>
+      <a href="#ph-profiles">1. pH Profiles</a>
+      <a href="#storage-protocols">2. Storage Stability</a>
+      <a href="#clinical-uses">3. Clinical Uses</a>
+      <a href="#mechanisms">4. Mechanisms &amp; Botanical Parallels</a>
+      <a href="#botanical-qc">5. Botanical QC</a>
+      <a href="#references">6. References</a>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- Core Concept -->
+    <section id="core-concept" class="card core-concept">
+      <h2>Core Concept</h2>
+      <p>
+        Organic chemistry and medicinal plants form a two-way bridge between nature and drug discovery.
+        Organic chemistry transforms raw botanical extracts into defined, optimized medicines, while
+        medicinal plants supply structural inspiration and synergistic therapeutic environments (WHO; EMA).
+        Across four key formaldehyde-based medicines—<strong>Urotropin</strong>, <strong>Formalin Lotion</strong>,
+        <strong>Emoform Toothpaste</strong>, and <strong>Formocresol</strong>—patient safety and therapeutic efficacy
+        depend directly on two core Organic Chemistry I principles: <strong>acid-base balance (pH)</strong> and
+        <strong>chemical stability during storage</strong>.
+      </p>
+    </section>
+
+    <!-- Section 1 -->
+    <section id="ph-profiles" class="card">
+      <h2>1. Core Focus: pH Profiles &amp; Acid-Base Chemistry Across the Four Medicines</h2>
+      <p>
+        In Organic Chemistry I, proton transfer and acid-base equilibria determine whether functional groups
+        remain stable or undergo hydrolysis, irritation, or tissue fixation. The therapeutic efficacy, mucosal
+        safety, and shelf stability of all four formaldehyde-based formulations depend directly on their
+        formulated pH and physiological environment (EDA).
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Medicine</th>
+              <th>Formulated pH</th>
+              <th>Acid-Base Buffer &amp; Chemical Behavior</th>
+              <th>Clinical &amp; Patient-Safety Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="med-name">1. Urotropin 500 mg<br><small>(Hexamine / Methenamine)</small></td>
+              <td><span class="ph-pill ph-base">pH 7.5–8.5</span><br><small>(Alkaline / Neutral)</small></td>
+              <td>
+                Remains chemically stable as an intact cage-like amine in neutral or alkaline media; requires
+                acidic urine (pH &le; 5.5) for acid-catalyzed hydrolysis into formaldehyde.
+              </td>
+              <td>
+                Prevents premature formaldehyde release in the stomach or bloodstream, targeting antibacterial
+                action strictly inside acidic bladder urine.
+              </td>
+            </tr>
+            <tr>
+              <td class="med-name">2. Formalin Lotion<br><small>(5%–10% Topical)</small></td>
+              <td><span class="ph-pill ph-acid">pH 2.8–4.0</span><br><small>(Buffered: pH 5.0–6.5)</small></td>
+              <td>
+                Inherently acidic due to trace formic acid formed by aldehyde oxidation; pharmaceutical
+                preparations are buffered to pH 5.0–6.5 to match skin physiology.
+              </td>
+              <td>
+                Buffering reduces severe chemical burns and irritation while preserving protein cross-linking
+                in the stratum corneum for hyperhidrosis.
+              </td>
+            </tr>
+            <tr>
+              <td class="med-name">3. Emoform Toothpaste<br><small>(Desensitizing)</small></td>
+              <td><span class="ph-pill ph-base">pH 8.0–9.0</span><br><small>(Alkaline)</small></td>
+              <td>
+                Formulated with an alkaline mineral-salt buffer system that neutralizes oral acids and
+                stabilizes low-concentration formaldehyde alongside mineral ions.
+              </td>
+              <td>
+                Protects tooth enamel from acid demineralization, firms gingival tissue, and occludes
+                exposed dentinal tubules without tissue damage.
+              </td>
+            </tr>
+            <tr>
+              <td class="med-name">4. Formocresol Solution<br><small>(Dental Pulpotomy)</small></td>
+              <td><span class="ph-pill ph-acid">pH 3.5–4.5</span><br><small>(Inherently Acidic)</small></td>
+              <td>
+                Acidic mixture of formaldehyde (aldehyde) and tricresol (phenolic antiseptic) maintaining
+                high reactivity toward pulp proteins.
+              </td>
+              <td>
+                Provides potent root canal disinfection and rapid pulp tissue fixation; requires strict
+                isolation to avoid soft-tissue burn.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <strong>Key pH Principle for Safe Medication Use:</strong> Urotropin is formulated at an alkaline pH (7.5–8.5)
+        for shelf stability and requires acidic urine (pH &le; 5.5) to activate, whereas Formalin Lotion and Formocresol
+        are inherently acidic solutions and Emoform Toothpaste relies on an alkaline mineral buffer (pH 8.0–9.0) to
+        protect dental enamel.
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section id="storage-protocols" class="card">
+      <h2>2. Core Focus: Chemical Stability &amp; Storage Protocols for the Four Medicines</h2>
+      <p>
+        Chemical stability in Organic Chemistry I explains how heat, light, oxygen, and moisture accelerate
+        unwanted reactions—such as premature prodrug hydrolysis, aldehyde oxidation into formic acid, or
+        solvent evaporation. Proper pharmaceutical storage preserves potency and prevents toxic degradation
+        across all four medicines (EDA; WHO).
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Medicine</th>
+              <th>Container Requirement</th>
+              <th>Temperature Condition</th>
+              <th>Environmental Protection &amp; Chemical Stability Rationale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="med-name">1. Hexamine Tablets<br><small>(Urotropin)</small></td>
+              <td>Well-closed container</td>
+              <td>Room temperature (15–30&deg;C)</td>
+              <td>
+                <strong>Protect from light, moisture, and heat:</strong> Moisture and acidic humidity trigger
+                premature hydrolysis of methenamine into formaldehyde inside the tablet before ingestion.
+              </td>
+            </tr>
+            <tr>
+              <td class="med-name">2. Formalin Lotion<br><small>(5%–10%)</small></td>
+              <td>Tightly closed container</td>
+              <td>Cool, well-ventilated place</td>
+              <td>
+                <strong>Keep away from heat and direct sunlight:</strong> Prevents volatilization of formaldehyde
+                gas, polymerization into paraformaldehyde, and photo-oxidation into irritating formic acid.
+              </td>
+            </tr>
+            <tr>
+              <td class="med-name">3. Emoform Toothpaste</td>
+              <td>Keep tube tightly closed</td>
+              <td>Cool, dry place</td>
+              <td>
+                <strong>Protect from direct sunlight and heat:</strong> Prevents drying of the paste base,
+                loss of volatile components, and disruption of the alkaline mineral-salt buffer (pH 8.0–9.0).
+              </td>
+            </tr>
+            <tr>
+              <td class="med-name">4. Formocresol Solution</td>
+              <td>Tightly closed, light-resistant container</td>
+              <td>Room temperature (15–30&deg;C)</td>
+              <td>
+                <strong>Protect from light and freezing:</strong> Light-resistant glass prevents photo-oxidation
+                of phenolic cresol and formaldehyde, while avoiding freezing prevents phase separation or
+                precipitation.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section id="clinical-uses" class="card">
+      <h2>3. Clinical Uses &amp; Practical Applications of the Four Medicines</h2>
+      <div class="clinical-grid">
+        <div class="clinical-item">
+          <h3>Hexamine / Urotropin Tablets (Urivin / Uralyt-U Urinary Effervescent)</h3>
+          <p>
+            Used as a urinary tract antiseptic and to prevent recurring urinary tract infections (UTIs).
+            In acidic urine, urotropin breaks down into formaldehyde to eliminate bacteria in the bladder
+            and urinary canal (EDA).
+          </p>
+        </div>
+        <div class="clinical-item">
+          <h3>Formalin Lotion 5%–10% (Topical Hyperhidrosis &amp; Dermatological Solution)</h3>
+          <p>
+            Prepared in specialized pharmaceutical formulations to treat severe excessive sweating
+            (hyperhidrosis) on the palms or soles of the feet, and used under strict medical supervision
+            for tissue hardening and dry skin lesions.
+          </p>
+        </div>
+        <div class="clinical-item">
+          <h3>Emoform Toothpaste (Emoform Sensitive / Emoform Protect)</h3>
+          <p>
+            Formulated for severe tooth sensitivity and bleeding gums. It contains mineral salts and
+            protective agents that strengthen gum tissue and desensitize exposed dentin.
+          </p>
+        </div>
+        <div class="clinical-item">
+          <h3>Formocresol Solution (Pediatric Pulpotomy Liquid)</h3>
+          <p>
+            Used in pediatric dentistry during root canal therapy and pulpotomy on primary (baby) teeth.
+            It acts as a fixative and antibacterial agent to treat and sterilize the remaining pulp tissue.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section id="mechanisms" class="card">
+      <h2>4. Organic Chemistry Mechanisms &amp; Botanical Parallels</h2>
+
+      <div class="mechanism-block">
+        <h3>A. Hydrolysis &amp; Prodrug Activation: Urotropin (Hexamine)</h3>
+        <p>
+          <strong>Chemical Mechanism:</strong> Urotropin contains methenamine (hexamine), a cage-like
+          heterocyclic amine synthesized from formaldehyde and ammonia.
+        </p>
+        <p>
+          <strong>Therapeutic Role &amp; Acidic Medium
